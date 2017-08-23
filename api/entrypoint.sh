@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-ENV=${ENV:-API}
+MODE=${MODE:-API}
 
-if  [ $ENV == "STATIC" ]; then
+if  [ $MODE == "STATIC" ]; then
     echo "start nginx on port 80"
     nginx -g "daemon off;"
     exit 0

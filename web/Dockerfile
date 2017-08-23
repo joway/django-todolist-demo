@@ -1,5 +1,5 @@
-FROM node:8.1.2
-MAINTAINER joway wang <joway@okjike.com>
+FROM node:7.10.0
+MAINTAINER joway wang <joway.w@gmail.com>
 ENV TZ Asia/Shanghai
 ENV NODE_ENV 'production'
 
