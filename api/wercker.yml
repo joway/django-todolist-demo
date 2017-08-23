@@ -1,0 +1,28 @@
+box: python:3.6.1-slim
+services:
+    - id: mysql
+      env:
+        MYSQL_ROOT_PASSWORD: woshimima
+build:
+  steps:
+    - install-packages:
+        packages: build-essential make g++ libexpat1-dev libssl-dev libmysqlclient-dev
+    - script:
+        name: setup env
+        code: |
+          export MYSQL_INSTANCE_NAME=db
+          export MYSQL_USERNAME=$MYSQL_ENV_MYSQL_ROOT_USERNAME
+          export MYSQL_PASSWORD=$MYSQL_ENV_MYSQL_ROOT_PASSWORD
+          export MYSQL_HOST=$MYSQL_PORT_3306_TCP_ADDR
+          export MYSQL_PORT=3306
+    - script:
+        name: show environment variables
+        code: env
+    - pip-install:
+        requirements_file: "requirements.txt"
+    - script:
+        name: create cache dir
+        code: mkdir cache
+    - script:
+        name: unit test
+        code: python manage.py test -v2
