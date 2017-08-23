@@ -24,6 +24,8 @@ SECRET_KEY = '&*6ibyd1b+%ljzc&u!29yq^osvd=k&q@r(nd#a1(!ckp-20*-q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
+SQLITE3_LOCATION = os.environ.get('SQLITE3_LOCATION', BASE_DIR)
+
 ALLOWED_HOSTS = ['127.0.0.1']
 CORS_ORIGIN_WHITELIST = (
     '127.0.0.1:8000',
@@ -92,7 +94,7 @@ WSGI_APPLICATION = 'config.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(SQLITE3_LOCATION, 'todolist.sqlite3'),
     }
 }
 

@@ -1,10 +1,24 @@
 #!/usr/bin/env bash
+ENV=${ENV:-API}
+
+if  [ $ENV == "STATIC" ]; then
+    echo "start nginx on port 80"
+    nginx -g "daemon off;"
+    exit 0
+fi
+
 python manage.py migrate
 
 uwsgi --chdir=/code \
       --module=config.wsgi:application \
+      --gevent 100 \
       --master \
-      --http-socket=0.0.0.0:8000 \
-      --processes=1 \
-      --harakiri=30 \
-      --max-requests=500
+      --processes 1 \
+      --disable-logging \
+      --enable-threads \
+      --single-interpreter \
+      --http-keepalive \
+      --post-buffering 32768 \
+      --http=0.0.0.0:8000 \
+      --harakiri-verbose \
+      --harakiri=30
