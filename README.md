@@ -2,9 +2,18 @@
 
 ## Demo
 
+### TodoList Web
+
 [http://todo.sh.mk](http://todo.sh.mk)
 
-## API
+### Admin
+
+[http://todo.sh.mk/admin](http://todo.sh.mk/admin)
+
+- username: demo
+- password demodemo
+
+## Run Backend
 
 ### Usage
 
@@ -13,7 +22,7 @@
 - python manage.py migrate
 - python manage.py runserver 0.0.0.0:8000
 
-## Web
+## Run FrontEnd
 
 ### Usage
 
