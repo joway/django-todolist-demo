@@ -1,7 +1,6 @@
 FROM node:7.10.0
 MAINTAINER joway wang <joway.w@gmail.com>
 ENV TZ Asia/Shanghai
-ENV NODE_ENV 'production'
 
 RUN mkdir -p /app
 WORKDIR /app
