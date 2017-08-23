@@ -26,11 +26,8 @@ DEBUG = False
 
 SQLITE3_LOCATION = os.environ.get('SQLITE3_LOCATION', BASE_DIR)
 
-ALLOWED_HOSTS = ['127.0.0.1']
-CORS_ORIGIN_WHITELIST = (
-    '127.0.0.1:8000',
-    '127.0.0.1:8080',
-)
+ALLOWED_HOSTS = ['*']
+CORS_ORIGIN_ALLOW_ALL = True
 CORS_ALLOW_METHODS = (
     'DELETE',
     'GET',
@@ -67,6 +64,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.AllowAny',
+    ],
+}
 
 ROOT_URLCONF = 'config.urls'
 
