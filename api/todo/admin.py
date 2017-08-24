@@ -4,10 +4,10 @@ from todo.models import TodoItem, TodoList
 
 
 @admin.register(TodoItem)
-class PolicyAdmin(admin.ModelAdmin):
+class TodoItemAdmin(admin.ModelAdmin):
     list_display = ('id', 'content', 'done', 'created_at')
 
 
 @admin.register(TodoList)
-class PolicyAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'items', 'created_at')
+class TodoListAdmin(admin.ModelAdmin):
+    list_display = ('id', 'name', 'created_at')

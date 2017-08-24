@@ -23,5 +23,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls, namespace='api')),
 
-    # url(r'^', index),
+    url(r'^$', index),
 ]
